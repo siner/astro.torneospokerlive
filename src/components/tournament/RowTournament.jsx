@@ -46,7 +46,7 @@ export default function RowTournament(props) {
                     {event && torneo.evento && (
                         <a href={'/eventos/' + torneo.evento.slug}>
                             <Image
-                                src={`https://wsrv.nl/?url=${torneo.evento.tour.logo}&w=100&h=100&fit=contain`}
+                                src={`https://wsrv.nl/?url=${torneo.evento.circuito.logo}&w=100&h=100&fit=contain`}
                                 width={100}
                                 height={100}
                                 alt={'Icono ' + torneo.evento.name}

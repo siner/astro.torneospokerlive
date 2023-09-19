@@ -10,7 +10,7 @@ export default function CardEvento(props) {
     const lastday = new Date(
         now.getFullYear(),
         now.getMonth(),
-        now.getDate() - 1
+        now.getDate()
     ).getTime()
     const created_at = new Date(evento.createdAt).getTime()
     const isnew = created_at > lastday
@@ -30,7 +30,7 @@ export default function CardEvento(props) {
                     <a href={'/eventos/' + evento.slug}>
                         <img
                             className="max-h-48 md:max-h-64 mx-auto object-cover"
-                            src={`https://wsrv.nl/?url=${evento.tour.logo}&w=300&h=150&fit=contain`}
+                            src={`https://wsrv.nl/?url=${evento.circuito.logo}&w=300&h=150&fit=contain`}
                             alt={evento.nombre}
                         />
                     </a>

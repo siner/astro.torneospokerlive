@@ -18,7 +18,7 @@ export default function RowEventoV2(props) {
     const lastday = new Date(
         now.getFullYear(),
         now.getMonth(),
-        now.getDate() - 1
+        now.getDate()
     ).getTime()
     const created_at = new Date(evento.createdAt).getTime()
     const isnew = created_at > lastday
@@ -71,7 +71,7 @@ export default function RowEventoV2(props) {
                                     className="relative block"
                                 >
                                     <img
-                                        src={`https://wsrv.nl/?url=${evento.tour.logo}&w=100&h=100&fit=contain`}
+                                        src={`https://wsrv.nl/?url=${evento.circuito.logo}&w=100&h=100&fit=contain`}
                                         width={100}
                                         height={100}
                                         alt={'Icono ' + evento.nombre}

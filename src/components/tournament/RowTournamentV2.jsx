@@ -20,7 +20,7 @@ export default function RowTournamentV2(props) {
     const lastday = new Date(
         now.getFullYear(),
         now.getMonth(),
-        now.getDate() - 1
+        now.getDate()
     ).getTime()
     const created_at = new Date(torneo.createdAt).getTime()
 

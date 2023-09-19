@@ -13,7 +13,7 @@ export default function RowEvento(props) {
                 <div className="p-2 w-2/12 md:w-1/12 flex items-center justify-center">
                     <img
                         className="mx-auto max-h-12"
-                        src={evento.tour.logo}
+                        src={evento.circuito.logo}
                         alt={evento.name}
                     />
                 </div>
