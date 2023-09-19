@@ -1,0 +1,27 @@
+---
+import RowEventoV2 from '../../components/evento/RowEventoV2'
+import Layout from '../../layouts/Layout.astro'
+
+import { getPastEventos } from '../../lib/api'
+
+const pastevents = await getPastEventos()
+---
+
+<Layout
+    title="Eventos ya celebrados de poker en vivo de España - Torneos Poker Live"
+>
+    <main class="mx-5">
+        <h2 class="text-2xl font-bold py-4">Eventos live pasados</h2>
+        <div class="space-y-0.5">
+            {
+                pastevents.map((event) => (
+                    <RowEventoV2
+                        key={event.id}
+                        evento={event}
+                        showtour={true}
+                    />
+                ))
+            }
+        </div>
+    </main>
+</Layout>

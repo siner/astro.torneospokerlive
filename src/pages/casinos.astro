@@ -1,0 +1,20 @@
+---
+import CardCasino from '../components/casino/CardCasino'
+import type Casino from '../interfaces/casino'
+import Layout from '../layouts/Layout.astro'
+
+import { getCasinos } from '../lib/api'
+
+const casinos = await getCasinos()
+---
+
+<Layout title="Casinos de España - Torneos Poker Live">
+    <main class="mx-5">
+        <h1 class="text-2xl font-bold py-4">Casinos</h1>
+        <div
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+        >
+            {casinos.map((casino) => <CardCasino casino={casino as Casino} />)}
+        </div>
+    </main>
+</Layout>

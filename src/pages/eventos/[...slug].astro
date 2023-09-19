@@ -1,0 +1,92 @@
+---
+import type { GetStaticPaths } from 'astro'
+import Layout from '../../layouts/Layout.astro'
+import { getEvento, getEventos, getTorneosByEvento } from '../../lib/api'
+import RowTournamentV2 from '../../components/tournament/RowTournamentV2'
+import CardCasino from '../../components/casino/CardCasino'
+import CardEvento from '../../components/evento/CardEvento'
+const { slug } = Astro.params
+const evento = await getEvento(slug as string)
+if (!evento) {
+    return new Response(null, {
+        status: 404,
+        statusText: 'Not found',
+    })
+}
+const title = `Evento ${evento.nombre} - Torneos Poker Live`
+const { datamapped: torneos, meta } = await getTorneosByEvento(evento.id)
+console.log(torneos)
+/** @type {import('schema-dts').Event} */
+const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: evento.nombre,
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    eventStatus: 'https://schema.org/EventScheduled',
+    location: {
+        '@type': 'Place',
+        name: evento.casino.nombre,
+        address: {
+            '@type': 'PostalAddress',
+            streetAddress: '',
+            addressLocality: '',
+            postalCode: '',
+            addressRegion: '',
+            addressCountry: '',
+        },
+    },
+    organizer: {
+        '@type': 'Organization',
+        name: evento.tour.nombre,
+    },
+    image: [evento.tour.logo],
+    description:
+        'Evento de poker ' +
+        evento.nombre +
+        ' en el casino ' +
+        evento.casino.nombre,
+    startDate: evento.desde,
+    endDate: evento.hasta,
+}
+---
+
+<Layout title={title}>
+    <main class="mx-5">
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        ></script>
+        <div class="md:flex gap-8">
+            <div class="w-100 md:w-4/12 mt-6 space-y-4">
+                <CardEvento evento={evento} />
+                <CardCasino casino={evento.casino} />
+            </div>
+            <div class="md:w-8/12">
+                {
+                    torneos.length > 0 && (
+                        <div>
+                            <h1 class="text-4xl font-bold py-4">
+                                Torneos de {evento.nombre}
+                            </h1>
+                            <div class="space-y-1 md:space-y-0.5">
+                                {torneos.map((torneo) => (
+                                    <RowTournamentV2
+                                        key={torneo.id}
+                                        torneo={torneo}
+                                        casino={false}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    )
+                }
+            </div>
+        </div>
+        <!--
+            <div class="w-full hidden lg:block">
+            <h2 class="text-4xl font-bold py-4 text-center">Calendario</h2>
+            <Calendar torneos={torneos} value={evento.desde} />
+        </div>
+        -->
+    </main>
+</Layout>

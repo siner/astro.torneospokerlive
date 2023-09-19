@@ -1,0 +1,55 @@
+---
+import Calendar from '../components/calendar/Calendar'
+import CardEvento from '../components/evento/CardEvento'
+import RowEventoV2 from '../components/evento/RowEventoV2'
+import RowTournamentV2 from '../components/tournament/RowTournamentV2'
+import Layout from '../layouts/Layout.astro'
+
+import { getCurrentEventos, getNextEventos } from '../lib/api'
+
+const currentevents = await getCurrentEventos()
+const nextevents = await getNextEventos()
+---
+
+<Layout
+    title="Todos los eventos de poker en vivo de España - Torneos Poker Live"
+>
+    <main class="mx-5">
+        {
+            currentevents.length > 0 && (
+                <div>
+                    <h2 class="text-2xl font-bold py-4">
+                        Eventos live actuales
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        {currentevents.map((event) => (
+                            <CardEvento key={event.id} evento={event} />
+                        ))}
+                    </div>
+                </div>
+            )
+        }
+
+        {
+            nextevents.length > 0 && (
+                <div>
+                    <h2 class="text-2xl font-bold py-4">
+                        Próximos eventos live
+                    </h2>
+                    <div class="space-y-0.5">
+                        {nextevents.map((event) => (
+                            <RowEventoV2
+                                key={event.id}
+                                evento={event}
+                                showtour={true}
+                            />
+                        ))}
+                    </div>
+                </div>
+            )
+        }
+        <div class="mt-10">
+            <a class="btn" href="/eventos/pasados"> Ver eventos pasados</a>
+        </div>
+    </main>
+</Layout>

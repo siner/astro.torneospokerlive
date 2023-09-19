@@ -1,0 +1,35 @@
+---
+import Calendar from '../components/calendar/Calendar'
+import RowTournamentV2 from '../components/tournament/RowTournamentV2'
+import Layout from '../layouts/Layout.astro'
+
+import { getNextTorneos } from '../lib/api'
+
+const { datamapped: torneos, meta } = await getNextTorneos()
+---
+
+<Layout
+    title="Todos los torneos de poker en vivo de España - Torneos Poker Live"
+>
+    <main class="mx-5">
+        <h2 class="text-2xl font-bold py-4">Próximos Torneos</h2>
+        <!--
+            <div class="w-full hidden lg:block mb-5">
+                <Calendar torneos={torneos} casino={true} event={true} />
+            </div>
+         -->
+
+        <div class="space-y-0.5">
+            {
+                torneos?.map((torneo) => (
+                    <RowTournamentV2
+                        key={torneo.id}
+                        torneo={torneo}
+                        casino="true"
+                        event="true"
+                    />
+                ))
+            }
+        </div>
+    </main>
+</Layout>
