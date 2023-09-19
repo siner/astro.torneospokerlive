@@ -1,12 +1,12 @@
 ---
 const { circuito } = Astro.props
 import { getEventosByCircuito } from '../../lib/api'
-import RowEventoV2 from './RowEventoV2'
+import RowEvento from './RowEvento'
 const events = await getEventosByCircuito(circuito.id)
 ---
 
 {
     events.map((event) => (
-        <RowEventoV2 key={event.id} evento={event} showtour={false} />
+        <RowEvento key={event.id} evento={event} showtour={false} />
     ))
 }

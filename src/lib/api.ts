@@ -248,7 +248,6 @@ export async function getTorneosByEvento(id: string): Promise<{
     datamapped: any[]
     meta: any
 }> {
-    console.log('id', id)
     const result = await fetchApi<any>({
         endpoint: 'torneos',
         query: {
@@ -259,7 +258,6 @@ export async function getTorneosByEvento(id: string): Promise<{
             populate: 'deep',
         },
     })
-    console.log('result', result)
 
     const { data, meta } = result
     const datamapped = data.map((torneo: any) => {

@@ -1,5 +1,5 @@
 ---
-import RowTournamentV2 from './RowTournamentV2'
+import RowTournament from './RowTournament'
 import { getNextTorneos } from '../../lib/api'
 const { datamapped: torneos, meta } = await getNextTorneos()
 ---
@@ -9,7 +9,7 @@ const { datamapped: torneos, meta } = await getNextTorneos()
 <div class="space-y-0.5">
     {
         torneos?.map((torneo) => (
-            <RowTournamentV2
+            <RowTournament
                 key={torneo.id}
                 torneo={torneo}
                 casino="true"

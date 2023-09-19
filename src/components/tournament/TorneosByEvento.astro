@@ -1,6 +1,6 @@
 ---
 import { getEvento, getTorneosByEvento } from '../../lib/api'
-import RowTournamentV2 from '../../components/tournament/RowTournamentV2'
+import RowTournament from './RowTournament'
 
 const { evento } = Astro.props
 const { datamapped: torneos, meta } = await getTorneosByEvento(evento.id)
@@ -8,6 +8,6 @@ const { datamapped: torneos, meta } = await getTorneosByEvento(evento.id)
 
 {
     torneos.map((torneo) => (
-        <RowTournamentV2 key={torneo.id} torneo={torneo} casino={false} />
+        <RowTournament key={torneo.id} torneo={torneo} casino={false} />
     ))
 }

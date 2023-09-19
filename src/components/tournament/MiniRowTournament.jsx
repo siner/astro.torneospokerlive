@@ -11,7 +11,6 @@ export default function MiniRowTournament(props) {
 
     const casinoname = torneo.casino.nombre ? torneo.casino.nombre : ''
     const eventoname = torneo.evento?.nombre ? '- ' + torneo.evento?.nombre : ''
-    console.log('torneo', torneo)
 
     return (
         <div

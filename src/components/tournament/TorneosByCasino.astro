@@ -1,6 +1,6 @@
 ---
 import { getNextTorneosByCasino } from '../../lib/api'
-import RowTournamentV2 from './RowTournamentV2'
+import RowTournament from './RowTournament'
 
 const { casino } = Astro.props
 const { datamapped: torneos, meta } = await getNextTorneosByCasino(casino.id)
@@ -15,7 +15,7 @@ const { datamapped: torneos, meta } = await getNextTorneosByCasino(casino.id)
 
             <div class="space-y-0.5">
                 {torneos.map((torneo) => (
-                    <RowTournamentV2
+                    <RowTournament
                         torneo={torneo}
                         event={true}
                         casino={false}
