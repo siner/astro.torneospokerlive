@@ -106,11 +106,6 @@ export default function RowTournament(props) {
                                     </div>
                                 )}
                                 <span>{torneo.nombre}</span>
-                                {isnew && (
-                                    <span className="badge badge-warning warning-content ml-2">
-                                        New
-                                    </span>
-                                )}
                             </div>
                         </a>
                     </div>

@@ -17,11 +17,6 @@ export default function CardEvento(props) {
 
     return (
         <div className="indicator w-full">
-            {isnew && (
-                <span className="indicator-item indicator-right badge badge-warning">
-                    New
-                </span>
-            )}
             <div className="grid card w-full bg-base-100 shadow-xl">
                 <figure
                     className="h-32 md:h-40"

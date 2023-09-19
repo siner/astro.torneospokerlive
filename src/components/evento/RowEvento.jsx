@@ -18,7 +18,7 @@ export default function RowEvento(props) {
     const lastday = new Date(
         now.getFullYear(),
         now.getMonth(),
-        now.getDate()
+        now.getDate() - 1
     ).getTime()
     const created_at = new Date(evento.createdAt).getTime()
     const isnew = created_at > lastday
@@ -85,12 +85,7 @@ export default function RowEvento(props) {
                     <div className="pl-1 mr-2 md:mr-5 p-2 grow">
                         <a href={'/eventos/' + evento.slug}>
                             <div className="font-medium text-sm md:text-base">
-                                {evento.nombre}{' '}
-                                {isnew && (
-                                    <span className="badge badge-warning warning-content ml-2">
-                                        New
-                                    </span>
-                                )}
+                                {evento.nombre}
                             </div>
                         </a>
                     </div>
