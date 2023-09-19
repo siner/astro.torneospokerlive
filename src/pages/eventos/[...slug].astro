@@ -48,6 +48,14 @@ const schema = {
     startDate: evento.desde,
     endDate: evento.hasta,
 }
+
+export const getStaticPaths = (async () => {
+    const eventos = await getEventos()
+    const paths = eventos.map((evento) => ({
+        params: { slug: evento.slug },
+    }))
+    return paths
+}) satisfies GetStaticPaths
 ---
 
 <Layout title={title}>
