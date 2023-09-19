@@ -32,7 +32,7 @@ const schema = {
     eventStatus: 'https://schema.org/EventScheduled',
     location: {
         '@type': 'Place',
-        name: casino.name,
+        name: casino.nombre,
         address: {
             '@type': 'PostalAddress',
             streetAddress: '',
@@ -42,15 +42,15 @@ const schema = {
             addressCountry: '',
         },
     },
-    name: torneo.name,
+    name: torneo.nombre,
     description:
-        'Torneo de poker ' + torneo.name + ' en el casino ' + casino.name,
+        'Torneo de poker ' + torneo.nombre + ' en el casino ' + casino.nombre,
     organizer: {
         '@type': 'Organization',
-        name: casino.name,
+        name: casino.nombre,
     },
     image: [casino.logo],
-    startDate: torneo.date,
+    startDate: torneo.fecha,
 }
 ---
 
