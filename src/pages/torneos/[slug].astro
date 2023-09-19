@@ -1,7 +1,6 @@
 ---
-import type { GetStaticPaths } from 'astro'
 import Layout from '../../layouts/Layout.astro'
-import { getTorneo, getTorneos } from '../../lib/api'
+import { getTorneo } from '../../lib/api'
 import { marked } from 'marked'
 import CardCasino from '../../components/casino/CardCasino'
 import CardEvento from '../../components/evento/CardEvento'
@@ -53,14 +52,6 @@ const schema = {
     image: [casino.logo],
     startDate: torneo.date,
 }
-
-export const getStaticPaths = (async () => {
-    const { datamapped: torneos, meta } = await getTorneos()
-    const paths = torneos.map((torneo) => ({
-        params: { slug: torneo.slug },
-    }))
-    return paths
-}) satisfies GetStaticPaths
 ---
 
 <Layout title={title}>

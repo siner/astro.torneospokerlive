@@ -1,0 +1,20 @@
+---
+import RowTournamentV2 from './RowTournamentV2'
+import { getNextTorneos } from '../../lib/api'
+const { datamapped: torneos, meta } = await getNextTorneos()
+---
+
+<h2 class="text-2xl font-bold py-4">Próximos Torneos</h2>
+
+<div class="space-y-0.5">
+    {
+        torneos?.map((torneo) => (
+            <RowTournamentV2
+                key={torneo.id}
+                torneo={torneo}
+                casino="true"
+                event="true"
+            />
+        ))
+    }
+</div>

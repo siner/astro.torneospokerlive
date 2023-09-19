@@ -1,0 +1,8 @@
+---
+import { getPastEventos } from '../../lib/api'
+import CardEvento from './CardEvento'
+
+const eventos = await getPastEventos()
+---
+
+{eventos.map((event) => <CardEvento evento={event} />)}

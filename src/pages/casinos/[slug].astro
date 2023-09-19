@@ -1,10 +1,9 @@
 ---
-import type { GetStaticPaths } from 'astro'
 import Layout from '../../layouts/Layout.astro'
-import { getCasino, getCasinos, getNextTorneosByCasino } from '../../lib/api'
+import TorneosByCasino from '../../components/tournament/TorneosByCasino.astro'
+import { getCasino } from '../../lib/api'
 import CardCasino from '../../components/casino/CardCasino'
 import { marked } from 'marked'
-import RowTournamentV2 from '../../components/tournament/RowTournamentV2'
 
 const { slug } = Astro.params
 const casino = await getCasino(slug as string)
@@ -17,48 +16,18 @@ if (!casino) {
 
 const descripcion = marked(casino.descripcion)
 const title = `Torneos de Poker en ${casino.nombre} - Torneos Poker Live`
-
-const { datamapped: torneos, meta } = await getNextTorneosByCasino(casino.id)
-
-export const getStaticPaths = (async () => {
-    const casinos = await getCasinos()
-    const paths = casinos.map((casino) => ({
-        params: { slug: casino.slug },
-    }))
-    return paths
-}) satisfies GetStaticPaths
 ---
 
 <Layout title={title}>
-    <main class="mx-5">
-        <div class="md:flex gap-4">
-            <div class="w-100 md:w-4/12 mt-6">
-                <CardCasino casino={casino} />
-                <div class="mt-4">
-                    <div class="p-2 prose" set:html={descripcion} />
-                </div>
-            </div>
-            <div class="md:w-8/12">
-                {
-                    torneos.length > 0 && (
-                        <div>
-                            <h2 class="text-4xl font-bold py-4">
-                                Próximos Torneos en {casino.name}
-                            </h2>
-
-                            <div class="space-y-0.5">
-                                {torneos.map((torneo) => (
-                                    <RowTournamentV2
-                                        torneo={torneo}
-                                        event={true}
-                                        casino={false}
-                                    />
-                                ))}
-                            </div>
-                        </div>
-                    )
-                }
+    <div class="md:flex gap-4">
+        <div class="w-100 md:w-4/12 mt-6">
+            <CardCasino casino={casino} />
+            <div class="mt-4">
+                <div class="p-2 prose" set:html={descripcion} />
             </div>
         </div>
-    </main>
+        <div class="md:w-8/12">
+            <TorneosByCasino casino={casino} />
+        </div>
+    </div>
 </Layout>

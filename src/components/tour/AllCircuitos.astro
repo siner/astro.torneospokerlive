@@ -1,0 +1,12 @@
+---
+import { getCircuitos } from '../../lib/api'
+import CardTour from './CardTour'
+const circuitos = await getCircuitos()
+---
+
+<h1 class="text-2xl font-bold py-4">Circuitos</h1>
+<div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+>
+    {circuitos.map((tour) => <CardTour tour={tour} />)}
+</div>

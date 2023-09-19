@@ -1,0 +1,27 @@
+---
+import { getNextTorneosByCasino } from '../lib/api'
+import RowTournamentV2 from './tournament/RowTournamentV2'
+
+const { casino } = Astro.props
+const { datamapped: torneos, meta } = await getNextTorneosByCasino(casino.id)
+---
+
+{
+    torneos.length > 0 && (
+        <div>
+            <h2 class="text-4xl font-bold py-4">
+                Próximos Torneos en {casino.name}
+            </h2>
+
+            <div class="space-y-0.5">
+                {torneos.map((torneo) => (
+                    <RowTournamentV2
+                        torneo={torneo}
+                        event={true}
+                        casino={false}
+                    />
+                ))}
+            </div>
+        </div>
+    )
+}

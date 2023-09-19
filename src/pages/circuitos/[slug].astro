@@ -1,10 +1,8 @@
 ---
-import type { GetStaticPaths } from 'astro'
 import Layout from '../../layouts/Layout.astro'
-import { getCircuito, getCircuitos, getEventosByCircuito } from '../../lib/api'
+import EventosByCircuito from '../../components/evento/EventosByCircuito.astro'
+import { getCircuito } from '../../lib/api'
 import CardTour from '../../components/tour/CardTour'
-
-import RowEventoV2 from '../../components/evento/RowEventoV2'
 
 const { slug } = Astro.params
 const tour = await getCircuito(slug as string)
@@ -15,43 +13,22 @@ if (!tour) {
     })
 }
 const title = `Circuito de Poker ${tour.nombre} - Torneos Poker Live`
-const events = await getEventosByCircuito(tour.id)
-
-export const getStaticPaths = (async () => {
-    const circuitos = await getCircuitos()
-    const paths = circuitos.map((tour) => ({
-        params: { slug: tour.slug },
-    }))
-    return paths
-}) satisfies GetStaticPaths
 ---
 
 <Layout title={title}>
-    <main class="mx-5">
-        <div class="md:flex gap-4">
-            <div class="w-100 md:w-3/12 mt-6 space-y-4">
-                <CardTour tour={tour} />
-            </div>
-            <div class="md:w-9/12">
-                {
-                    events.length > 0 && (
-                        <div>
-                            <h1 class="text-4xl font-bold py-4">
-                                Eventos de {tour.name}
-                            </h1>
-                            <div class="space-y-1 md:space-y-0.5">
-                                {events.map((event) => (
-                                    <RowEventoV2
-                                        key={event.id}
-                                        evento={event}
-                                        showtour={false}
-                                    />
-                                ))}
-                            </div>
-                        </div>
-                    )
-                }
+    <div class="md:flex gap-4">
+        <div class="w-100 md:w-3/12 mt-6 space-y-4">
+            <CardTour tour={tour} />
+        </div>
+        <div class="md:w-9/12">
+            <div>
+                <h1 class="text-4xl font-bold py-4">
+                    Eventos de {tour.nombre}
+                </h1>
+                <div class="space-y-1 md:space-y-0.5">
+                    <EventosByCircuito circuito={tour} />
+                </div>
             </div>
         </div>
-    </main>
+    </div>
 </Layout>
