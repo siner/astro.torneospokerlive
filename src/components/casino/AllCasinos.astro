@@ -1,10 +1,7 @@
 ---
 import CardCasino from './CardCasino'
 import { getCasinos } from '../../lib/api'
-Astro.response.headers.set(
-    'Cache-Control',
-    's-maxage=1, stale-while-revalidate'
-)
+
 const casinos = await getCasinos()
 ---
 
