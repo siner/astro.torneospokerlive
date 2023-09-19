@@ -7,8 +7,18 @@ import Layout from '../layouts/Layout.astro'
 <Layout
     title="Todos los eventos de poker en vivo de España - Torneos Poker Live"
 >
-    <CurrentEventos />
-    <NextEventos />
+    <h2 class="text-2xl font-bold py-4">Eventos live actuales</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <CurrentEventos />
+    </div>
+    <h2 class="text-2xl font-bold py-4">Próximos eventos live</h2>
+    <div class="space-y-2">
+        <NextEventos />
+    </div>
+    <div class="text-right mt-4">
+        <a class="btn" href="/eventos"> Ver Todos</a>
+    </div>
+
     <div class="mt-10">
         <a class="btn" href="/eventos/pasados"> Ver eventos pasados</a>
     </div>

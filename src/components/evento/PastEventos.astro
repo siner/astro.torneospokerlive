@@ -1,8 +1,8 @@
 ---
 import { getPastEventos } from '../../lib/api'
-import CardEvento from './CardEvento'
+import RowEvento from './RowEvento'
 
 const eventos = await getPastEventos()
 ---
 
-{eventos.map((event) => <CardEvento evento={event} />)}
+{eventos.map((event) => <RowEvento evento={event} showtour={true} />)}
