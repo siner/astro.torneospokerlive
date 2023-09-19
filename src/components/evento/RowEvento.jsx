@@ -45,7 +45,7 @@ export default function RowEvento(props) {
             <div className="flex flex-row w-full">
                 <div className="flex items-center justify-between flex-1 cursor-pointer select-none w-full">
                     <div
-                        className="hidden md:flex flex-col items-center justify-center w-20 mr-4 p-2 h-10"
+                        className="hidden md:flex flex-col items-center justify-center rounded-full mx-2"
                         style={{
                             backgroundColor: backgroundColor,
                         }}
@@ -55,9 +55,9 @@ export default function RowEvento(props) {
                             className="relative block"
                         >
                             <img
-                                src={`https://wsrv.nl/?url=${evento.casino.logo}&w=100&h=40&fit=contain`}
-                                width={100}
-                                height={40}
+                                src={`https://wsrv.nl/?url=${evento.casino.logo}&w=30&h=30&fit=contain&mask=circle`}
+                                width={30}
+                                height={30}
                                 alt={'Logo ' + evento.casino.nombre}
                                 className="mx-auto object-cover"
                             />
@@ -71,9 +71,9 @@ export default function RowEvento(props) {
                                     className="relative block"
                                 >
                                     <img
-                                        src={`https://wsrv.nl/?url=${evento.circuito.logo}&w=100&h=100&fit=contain`}
-                                        width={100}
-                                        height={100}
+                                        src={`https://wsrv.nl/?url=${evento.circuito.logo}&w=30&h=30&fit=contain&mask=circle`}
+                                        width={30}
+                                        height={30}
                                         alt={'Icono ' + evento.nombre}
                                         className="mx-auto"
                                     />
