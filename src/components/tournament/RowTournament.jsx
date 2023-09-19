@@ -42,7 +42,7 @@ export default function RowTournament(props) {
             >
                 {casino && (
                     <div className="text-xs md:hidden">
-                        {torneo.casino.name}
+                        {torneo.casino.nombre}
                     </div>
                 )}
                 <div className="text-xs">
