@@ -4,6 +4,7 @@ import type Casino from '../interfaces/casino'
 import Layout from '../layouts/Layout.astro'
 
 import { getCasinos } from '../lib/api'
+export const prerender = true
 
 const casinos = await getCasinos()
 ---

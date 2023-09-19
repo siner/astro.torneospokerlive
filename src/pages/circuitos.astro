@@ -3,6 +3,7 @@ import CardTour from '../components/tour/CardTour'
 import Layout from '../layouts/Layout.astro'
 
 import { getCircuitos } from '../lib/api'
+export const prerender = true
 
 const circuitos = await getCircuitos()
 ---

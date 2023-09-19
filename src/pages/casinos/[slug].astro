@@ -19,6 +19,7 @@ const descripcion = marked(casino.descripcion)
 const title = `Torneos de Poker en ${casino.nombre} - Torneos Poker Live`
 
 const { datamapped: torneos, meta } = await getNextTorneosByCasino(casino.id)
+export const prerender = true
 
 export const getStaticPaths = (async () => {
     const casinos = await getCasinos()

@@ -17,6 +17,8 @@ if (!tour) {
 const title = `Circuito de Poker ${tour.nombre} - Torneos Poker Live`
 const events = await getEventosByCircuito(tour.id)
 
+export const prerender = true
+
 export const getStaticPaths = (async () => {
     const circuitos = await getCircuitos()
     const paths = circuitos.map((tour) => ({
