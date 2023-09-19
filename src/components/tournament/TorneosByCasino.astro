@@ -1,6 +1,6 @@
 ---
-import { getNextTorneosByCasino } from '../lib/api'
-import RowTournamentV2 from './tournament/RowTournamentV2'
+import { getNextTorneosByCasino } from '../../lib/api'
+import RowTournamentV2 from './RowTournamentV2'
 
 const { casino } = Astro.props
 const { datamapped: torneos, meta } = await getNextTorneosByCasino(casino.id)
