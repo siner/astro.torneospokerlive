@@ -3,7 +3,7 @@ import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 Astro.response.headers.set(
     'Cache-Control',
-    's-maxage=3600, stale-while-revalidate'
+    's-maxage=1, stale-while-revalidate'
 )
 import { ViewTransitions } from 'astro:transitions'
 import { SEO } from 'astro-seo'
