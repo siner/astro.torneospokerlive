@@ -71,7 +71,7 @@ export async function getCasinos(): Promise<any[]> {
             'sort[0]': 'nombre:ASC',
             'pagination[page]': '1',
             'pagination[pageSize]': '1000',
-            populate: 'deep',
+            populate: 'logo',
         },
     })
     const datamapped = data.map((casino: any) => {
@@ -100,7 +100,7 @@ export async function getCircuitos(): Promise<any[]> {
             'sort[0]': 'nombre:ASC',
             'pagination[page]': '1',
             'pagination[pageSize]': '1000',
-            populate: 'deep',
+            populate: 'logo',
         },
     })
     const datamapped = data.map((circuito: any) => {
@@ -286,7 +286,8 @@ export async function getEventos(): Promise<any[]> {
             'sort[0]': 'desde:DESC',
             'pagination[page]': '1',
             'pagination[pageSize]': '1000',
-            populate: 'deep',
+            'populate[casino][populate][0]': 'logo',
+            'populate[tour][populate][0]': 'logo',
         },
     })
     const datamapped = data.map((evento: any) => {
@@ -300,9 +301,10 @@ export async function getEventosByCircuito(id: string): Promise<any[]> {
         endpoint: 'eventos',
         wrappedByKey: 'data',
         query: {
-            'sort[0]': 'desde:ASC',
+            'sort[0]': 'desde:DESC',
             'filters[tour][id][$eq]': id,
-            populate: 'deep',
+            'populate[casino][populate][0]': 'logo',
+            'populate[tour][populate][0]': 'logo',
         },
     })
     const datamapped = data.map((evento: any) => {
@@ -317,7 +319,9 @@ export async function getEvento(slug: string): Promise<any> {
         wrappedByKey: 'data',
         query: {
             'filters[slug][$eq]': slug,
-            populate: 'deep',
+            'populate[casino][populate][0]': 'logo',
+            'populate[tour][populate][0]': 'logo',
+            populate: 'torneos',
         },
     })
     return data[0] ? mapEvento(data[0]) : null
@@ -330,7 +334,8 @@ export async function getNextEventos(): Promise<any[]> {
         query: {
             'sort[0]': 'desde:ASC',
             'filters[desde][$gte]': new Date().toISOString().split('T')[0],
-            populate: 'deep',
+            'populate[casino][populate][0]': 'logo',
+            'populate[tour][populate][0]': 'logo',
         },
     })
     const datamapped = data.map((evento: any) => {
@@ -347,7 +352,8 @@ export async function getCurrentEventos(): Promise<any[]> {
             'sort[0]': 'desde:ASC',
             'filters[desde][$lte]': new Date().toISOString().split('T')[0],
             'filters[hasta][$gte]': new Date().toISOString().split('T')[0],
-            populate: 'deep',
+            'populate[casino][populate][0]': 'logo',
+            'populate[tour][populate][0]': 'logo',
         },
     })
     const datamapped = data.map((evento: any) => {
@@ -365,7 +371,8 @@ export async function getPastEventos(): Promise<any[]> {
             'pagination[page]': '1',
             'pagination[pageSize]': '50',
             'filters[hasta][$lte]': new Date().toISOString().split('T')[0],
-            populate: 'deep',
+            'populate[casino][populate][0]': 'logo',
+            'populate[tour][populate][0]': 'logo',
         },
     })
     const datamapped = data.map((evento: any) => {
