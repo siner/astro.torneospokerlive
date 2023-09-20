@@ -127,7 +127,7 @@ export async function getTorneos(): Promise<{ datamapped: any[]; meta: any }> {
         query: {
             'sort[0]': 'fecha:DESC',
             'pagination[page]': '1',
-            'pagination[pageSize]': '20',
+            'pagination[pageSize]': '50',
             populate: 'deep',
         },
     })
@@ -148,7 +148,7 @@ export async function getNextTorneos(): Promise<{
         query: {
             'sort[0]': 'fecha:ASC',
             'pagination[page]': '1',
-            'pagination[pageSize]': '20',
+            'pagination[pageSize]': '50',
             'filters[fecha][$gte]': new Date().toISOString().split('T')[0],
             populate: 'deep',
         },
@@ -175,7 +175,7 @@ export async function getTodayTorneos(): Promise<{
         query: {
             'sort[0]': 'fecha:ASC',
             'pagination[page]': '1',
-            'pagination[pageSize]': '20',
+            'pagination[pageSize]': '40',
             'filters[fecha][$gte]': today.toISOString().split('T')[0],
             'filters[fecha][$lte]': tomorrow.toISOString().split('T')[0],
             populate: 'deep',
@@ -205,7 +205,7 @@ export async function getTomorrowTorneos(): Promise<{
         query: {
             'sort[0]': 'fecha:ASC',
             'pagination[page]': '1',
-            'pagination[pageSize]': '20',
+            'pagination[pageSize]': '40',
             'filters[$and][0][fecha][$gte]': today.toISOString().split('T')[0],
             'filters[$and][0][fecha][$lte]': tomorrow
                 .toISOString()
