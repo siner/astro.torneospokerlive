@@ -361,7 +361,9 @@ export async function getPastEventos(): Promise<any[]> {
         endpoint: 'eventos',
         wrappedByKey: 'data',
         query: {
-            'sort[0]': 'desde:ASC',
+            'sort[0]': 'desde:DESC',
+            'pagination[page]': '1',
+            'pagination[pageSize]': '50',
             'filters[hasta][$lte]': new Date().toISOString().split('T')[0],
             populate: 'deep',
         },
