@@ -8,8 +8,6 @@ export default function RowTournament(props) {
     const textColor = getTextColor(backgroundColor)
 
     let datetorneo = new Date(torneo.fecha)
-    datetorneo.setHours(datetorneo.getHours() + 2)
-
     let { datestring, hour } = formatDate(datetorneo)
     let today = new Date()
     today.setHours(0, 0, 0, 0)
