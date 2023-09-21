@@ -55,11 +55,8 @@ const schema = {
 ---
 
 <Layout title={title}>
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     <div class="md:flex gap-4 space-y-4 md:space-y-0 mt-10">
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        ></script>
         <div class="md:w-8/12">
             <div
                 class="text-2xl font-bold flex justify-between items-center p-5"
