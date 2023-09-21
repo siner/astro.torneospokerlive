@@ -36,6 +36,7 @@ function padTo2Digits(num) {
 
 export function formatDate(date) {
     let newdate = new Date(date)
+    newdate.setHours(newdate.getHours() + 2)
     let datestring = newdate.toLocaleDateString('es-ES', options)
     let hour =
         newdate.getHours() + ':' + String(newdate.getMinutes()).padStart(2, 0)
