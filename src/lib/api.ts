@@ -166,10 +166,10 @@ export async function getTodayTorneos(): Promise<{
     meta: any
 }> {
     var today = new Date()
-    today.setHours(2, 0, 0, 0)
+    today.setHours(0, 0, 0, 0)
     var tomorrow = new Date()
     tomorrow.setDate(tomorrow.getDate() + 1)
-    tomorrow.setHours(2, 0, 0, 0)
+    tomorrow.setHours(0, 0, 0, 0)
     const result = await fetchApi<any>({
         endpoint: 'torneos',
         query: {
@@ -195,10 +195,10 @@ export async function getTomorrowTorneos(): Promise<{
 }> {
     var today = new Date()
     today.setDate(today.getDate() + 1)
-    today.setHours(2, 0, 0, 0)
+    today.setHours(0, 0, 0, 0)
     var tomorrow = new Date()
     tomorrow.setDate(tomorrow.getDate() + 2)
-    tomorrow.setHours(2, 0, 0, 0)
+    tomorrow.setHours(0, 0, 0, 0)
 
     const result = await fetchApi<any>({
         endpoint: 'torneos',
