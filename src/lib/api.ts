@@ -350,8 +350,12 @@ export async function getCurrentEventos(): Promise<any[]> {
         wrappedByKey: 'data',
         query: {
             'sort[0]': 'desde:ASC',
-            'filters[desde][$lte]': new Date().toISOString().split('T')[0],
-            'filters[hasta][$gte]': new Date().toISOString().split('T')[0],
+            'filters[$and][0][desde][$lte]': new Date()
+                .toISOString()
+                .split('T')[0],
+            'filters[$and][0][hasta][$gte]': new Date()
+                .toISOString()
+                .split('T')[0],
             'populate[casino][populate][0]': 'logo',
             'populate[tour][populate][0]': 'logo',
         },
