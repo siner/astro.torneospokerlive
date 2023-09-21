@@ -24,35 +24,32 @@ export default function RowEvento(props) {
     const isnew = created_at > lastday
 
     return (
-        <div
-            className="flex flex-col w-full bg-base-100 base-content hover:bg-base-200 border-solid border shadow-sm"
-            style={{
-                opacity: opacity,
-            }}
-        >
+        <a href={'/eventos/' + evento.slug}>
             <div
-                className="flex flex-row w-full md:hidden justify-between p-1 text-xs"
+                className="flex flex-col w-full bg-base-100 base-content hover:bg-base-200 border-solid border shadow-sm"
                 style={{
-                    backgroundColor: backgroundColor,
-                    color: textColor,
+                    opacity: opacity,
                 }}
             >
-                <div>{evento.casino.nombre}</div>
-                <div>
-                    {datestringfrom} - {datestringto}
+                <div
+                    className="flex flex-row w-full md:hidden justify-between p-1 text-xs"
+                    style={{
+                        backgroundColor: backgroundColor,
+                        color: textColor,
+                    }}
+                >
+                    <div>{evento.casino.nombre}</div>
+                    <div>
+                        {datestringfrom} - {datestringto}
+                    </div>
                 </div>
-            </div>
-            <div className="flex flex-row w-full">
-                <div className="flex items-center justify-between flex-1 cursor-pointer select-none w-full">
-                    <div
-                        className="hidden md:flex flex-col items-center justify-center rounded-full mx-2"
-                        style={{
-                            backgroundColor: backgroundColor,
-                        }}
-                    >
-                        <a
-                            href={'/casinos/' + evento.casino.slug}
-                            className="relative block"
+                <div className="flex flex-row w-full">
+                    <div className="flex items-center justify-between flex-1 cursor-pointer select-none w-full">
+                        <div
+                            className="hidden md:flex flex-col items-center justify-center rounded-full mx-2"
+                            style={{
+                                backgroundColor: backgroundColor,
+                            }}
                         >
                             <img
                                 src={`https://wsrv.nl/?url=${evento.casino.logo}&w=30&h=30&fit=contain&mask=circle`}
@@ -61,15 +58,10 @@ export default function RowEvento(props) {
                                 alt={'Logo ' + evento.casino.nombre}
                                 className="mx-auto object-cover"
                             />
-                        </a>
-                    </div>
-                    {showtour && (
-                        <div className="flex flex-col items-center justify-center w-14 h-10 mr-4 p-2">
-                            {evento && (
-                                <a
-                                    href={'/eventos/' + evento.slug}
-                                    className="relative block"
-                                >
+                        </div>
+                        {showtour && (
+                            <div className="flex flex-col items-center justify-center w-14 h-10 mr-4 p-2">
+                                {evento && (
                                     <img
                                         src={`https://wsrv.nl/?url=${evento.circuito.logo}&w=30&h=30&fit=contain&mask=circle`}
                                         width={30}
@@ -77,20 +69,16 @@ export default function RowEvento(props) {
                                         alt={'Icono ' + evento.nombre}
                                         className="mx-auto"
                                     />
-                                </a>
-                            )}
-                        </div>
-                    )}
+                                )}
+                            </div>
+                        )}
 
-                    <div className="pl-1 mr-2 md:mr-5 p-2 grow">
-                        <a href={'/eventos/' + evento.slug}>
+                        <div className="pl-1 mr-2 md:mr-5 p-2 grow">
                             <div className="font-medium text-sm md:text-base">
                                 {evento.nombre}
                             </div>
-                        </a>
-                    </div>
-                    <div className="hidden md:block pl-1 mr-2 md:mr-5 text-right md:text-left p-2">
-                        <a href={'/eventos/' + evento.slug}>
+                        </div>
+                        <div className="hidden md:block pl-1 mr-2 text-right md:text-left p-2">
                             <div className="text-xs">
                                 <div className="flex justify-between text-xs md:text-base">
                                     <div className="flex content-right items-center space-x-1">
@@ -118,26 +106,10 @@ export default function RowEvento(props) {
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
-
-                    <a
-                        href={'/eventos/' + evento.slug}
-                        className="flex justify-end w-4 md:w-8 text-right"
-                    >
-                        <svg
-                            className="w-5 md:w-10"
-                            width="20"
-                            fill="currentColor"
-                            height="20"
-                            viewBox="0 0 1792 1792"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path d="M1363 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"></path>
-                        </svg>
-                    </a>
                 </div>
             </div>
-        </div>
+        </a>
     )
 }
