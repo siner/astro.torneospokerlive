@@ -9,7 +9,7 @@ export default function RowTournament(props) {
 
     let datetorneo = new Date(torneo.fecha)
     if (datetorneo < new Date('2023-09-01'))
-        datetorneo.setHours(datetorneo.getHours() - 2)
+        datetorneo.setHours(datetorneo.getHours())
 
     let { datestring, hour } = formatDate(datetorneo)
     let today = new Date()
