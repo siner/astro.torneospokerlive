@@ -18,7 +18,7 @@ export default function CardEvento(props) {
     return (
         <a href={'/eventos/' + evento.slug}>
             <div className="indicator w-full">
-                <div className="grid card w-full bg-base-100 shadow-xl">
+                <div className="grid card w-full bg-base-100 shadow-lg rounded-md h-80">
                     <figure
                         className="h-32 md:h-40"
                         style={{ backgroundColor: bg }}
