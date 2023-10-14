@@ -31,13 +31,7 @@ export default function RowTournament(props) {
                     opacity: opacity,
                 }}
             >
-                <div
-                    className="flex flex-row w-full md:hidden justify-between px-1"
-                    style={{
-                        backgroundColor: backgroundColor,
-                        color: textColor,
-                    }}
-                >
+                <div className="flex flex-row w-full md:hidden justify-between px-1 pb-1 bg-base-200">
                     {casino && (
                         <div className="text-xs md:hidden">
                             {torneo.casino.nombre}
