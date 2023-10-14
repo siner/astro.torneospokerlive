@@ -3,6 +3,7 @@ import { getSimpleDate } from '../../lib/utils'
 
 export default function CardEvento(props) {
     var evento = props.evento
+    var showCasino = props.showCasino
     let datestringfrom = getSimpleDate(evento.desde)
     let datestringto = getSimpleDate(evento.hasta)
     const bg = evento.casino.color
@@ -20,14 +21,25 @@ export default function CardEvento(props) {
             <div className="indicator w-full">
                 <div className="grid card w-full bg-base-100 shadow-lg rounded-md h-80">
                     <figure
-                        className="h-32 md:h-40"
+                        className="flex justify-center items-center w-full h-40"
                         style={{ backgroundColor: bg }}
                     >
                         <img
-                            className="max-h-48 md:max-h-64 mx-auto object-cover"
-                            src={`https://wsrv.nl/?url=${evento.circuito.logo}&w=300&h=150&fit=contain`}
+                            className="mx-auto"
+                            src={`https://wsrv.nl/?url=${evento.circuito.logo}&w=200&h=200&fit=contain&mask=circle`}
+                            width={100}
+                            height={100}
                             alt={evento.nombre}
                         />
+                        {showCasino && (
+                            <img
+                                className="mx-auto"
+                                src={`https://wsrv.nl/?url=${evento.casino.logo}&w=200&h=200&fit=contain&mask=circle`}
+                                width={100}
+                                height={100}
+                                alt={evento.casino.nombre}
+                            />
+                        )}
                     </figure>
                     <div className="card-body items-center text-center p-4 md:p-8">
                         <div className="flex justify-between mb-4 w-full">

@@ -31,13 +31,7 @@ export default function RowEvento(props) {
                     opacity: opacity,
                 }}
             >
-                <div
-                    className="flex flex-row w-full md:hidden justify-between p-1 text-xs"
-                    style={{
-                        backgroundColor: backgroundColor,
-                        color: textColor,
-                    }}
-                >
+                <div className="flex flex-row w-full md:hidden justify-between p-1 text-xs bg-base-200">
                     <div>{evento.casino.nombre}</div>
                     <div>
                         {datestringfrom} - {datestringto}
